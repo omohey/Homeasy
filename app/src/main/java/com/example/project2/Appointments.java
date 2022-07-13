@@ -3,7 +3,7 @@ package com.example.project2;
 public class Appointments {
     String date, time, workerID, customerID, address, description, jobType;
     int day, month, year, price;
-    Status status;
+    Statuss status;
     //float = customerRating, workerRating;
 
 
@@ -12,7 +12,7 @@ public class Appointments {
 
     }
 
-    public Appointments(String date, String time, String workerID, String customerID, String address, String description, String jobType, int day, int month, int year, Status status) {
+    public Appointments(String date, String time, String workerID, String customerID, String address, String description, String jobType, int day, int month, int year, Statuss status) {
         this.date = date;
         this.time = time;
         this.workerID = workerID;
@@ -106,11 +106,11 @@ public class Appointments {
         this.year = year;
     }
 
-    public Status getStatus() {
+    public Statuss getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(Statuss status) {
         this.status = status;
     }
     public int getPrice() {

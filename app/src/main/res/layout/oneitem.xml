@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="105dp">
+    android:layout_height="130dp">
 
 
     <TextView
@@ -50,7 +50,7 @@
         app:srcCompat="@drawable/money" />
 
     <TextView
-        android:id="@+id/examMessage"
+        android:id="@+id/pricetext"
         android:layout_toEndOf="@+id/pricepic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,6 +60,28 @@
         android:layout_marginStart="10dp"
         android:gravity="center"
         android:text="Price"
+        android:textSize="16sp"/>
+
+    <ImageView
+        android:id="@+id/jobtypepic"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/pricetext"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="7dp"
+        app:srcCompat="@drawable/job_icon1" />
+
+    <TextView
+        android:id="@+id/jobtypetext"
+        android:layout_toEndOf="@+id/jobtypepic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pricetext"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:gravity="center"
+        android:text="Job"
         android:textSize="16sp"/>
 
 

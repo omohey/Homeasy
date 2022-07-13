@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.project2.ui.dashboard.DashboardFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -87,12 +88,15 @@ public class customer_booking extends AppCompatActivity {
         confirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 Address = AddressEdit.getText().toString();
                 JobDesc = JobDescEdit.getText().toString();
                 timeString = String.format(Locale.getDefault(), "%02d:%02d", hour, min);
 
                 Appointments appointment = new Appointments(DateString, timeString, "", customerID,
-                        Address, JobDesc, jobtype, Day, Month, Year, Status.requested );
+                        Address, JobDesc, jobtype, Day, Month, Year, Statuss.requested );
                 if (TextUtils.isEmpty(Address))
                 {
                     Toast.makeText(customer_booking.this, "Address field is empty", Toast.LENGTH_SHORT).show();
@@ -136,9 +140,10 @@ public class customer_booking extends AppCompatActivity {
                             customerref.updateChildren(m);
 
 
-//                                Intent i = new Intent(MainActivity.this, workers_main.class);
-//                                i.putExtra("ID", user.getID());
-//                                startActivity(i);
+                            customer_booking.this.finish();
+//                            Intent i = new Intent(customer_booking.this, DashboardFragment.class);
+//                            i.putExtra("ID", customerID);
+//                            startActivity(i);
 
 
                         }
