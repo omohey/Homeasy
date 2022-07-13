@@ -14,11 +14,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.project2.R;
 import com.example.project2.customer_booking;
+import com.example.project2.customer_main;
 import com.example.project2.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private FragmentHomeBinding binding;
+
+    String customerID;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -27,6 +30,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        customer_main activity = (customer_main) getActivity();
+        customerID = activity.getCustomerID();
 
         //final TextView textView = binding.textHome;
         //homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -83,6 +89,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.plumber_image: i.putExtra("Job", "Plumber");
                 break;
         }
+        i.putExtra("ID", customerID);
+
 
 
         startActivity(i);

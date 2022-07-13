@@ -1,10 +1,12 @@
 package com.example.project2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,16 +17,31 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class customer_booking extends AppCompatActivity {
 
     private DatePickerDialog datePickerDialog;
     private Button dateButton, timebutton, confirmbtn;
-    private String jobtype, Address, JobDesc;
+    private String jobtype, Address, JobDesc, DateString, customerID, timeString;
     EditText AddressEdit, JobDescEdit;
-    int hour, min;
+    int hour, min, Year, Month, Day;
+
+    FirebaseDatabase firebaseDatabase;
+
+    DatabaseReference databaseReference;
+
     private String getTodaysDate()
     {
         Calendar cal = Calendar.getInstance();
@@ -40,6 +57,11 @@ public class customer_booking extends AppCompatActivity {
         setContentView(R.layout.activity_customer_booking);
 
 
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+        // below line is used to get reference for our database.
+        databaseReference = firebaseDatabase.getReference();
+
         initDatePicker();
         dateButton = findViewById(R.id.datePickerButton);
         dateButton.setText(getTodaysDate());
@@ -47,7 +69,9 @@ public class customer_booking extends AppCompatActivity {
         jobtype = "";
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            jobtype = bundle.getString("Job"); }
+            jobtype = bundle.getString("Job");
+            customerID = bundle.getString("ID");
+        }
 
 
         TextView tv = (TextView) findViewById(R.id.jobtype);
@@ -65,7 +89,10 @@ public class customer_booking extends AppCompatActivity {
             public void onClick(View v) {
                 Address = AddressEdit.getText().toString();
                 JobDesc = JobDescEdit.getText().toString();
+                timeString = String.format(Locale.getDefault(), "%02d:%02d", hour, min);
 
+                Appointments appointment = new Appointments(DateString, timeString, "", customerID,
+                        Address, JobDesc, jobtype, Day, Month, Year, Status.requested );
                 if (TextUtils.isEmpty(Address))
                 {
                     Toast.makeText(customer_booking.this, "Address field is empty", Toast.LENGTH_SHORT).show();
@@ -76,6 +103,57 @@ public class customer_booking extends AppCompatActivity {
                     Toast.makeText(customer_booking.this, "Job Decription field is empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+
+
+                DatabaseReference Appsref = databaseReference.child(values.apps_table).push();
+                String AppointmentID = Appsref.getKey();
+                Appsref.setValue(appointment);
+
+                DatabaseReference customerref = databaseReference.child(values.customers_table).child(customerID);
+
+
+                customerref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.getValue() == null)
+                        {
+                            Toast.makeText(customer_booking.this, "Error", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        else
+                        {
+                            Customer customer = snapshot.getValue(Customer.class);
+                            List<String> apps = customer.getAppointments();
+                            if (apps == null)
+                            {
+                                apps = new ArrayList<>();
+                            }
+
+                            apps.add(AppointmentID);
+                            Map<String, Object> m = new HashMap();
+                            m.put("appointments", apps);
+                            customerref.updateChildren(m);
+
+
+//                                Intent i = new Intent(MainActivity.this, workers_main.class);
+//                                i.putExtra("ID", user.getID());
+//                                startActivity(i);
+
+
+                        }
+
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
 
             }
         });
@@ -89,7 +167,11 @@ public class customer_booking extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int day)
             {
                 month = month + 1;
+                Year = year;
+                Month = month;
+                Day = day;
                 String date = makeDateString(day, month, year);
+                DateString = date;
                 dateButton.setText(date);
             }
         };
@@ -98,7 +180,6 @@ public class customer_booking extends AppCompatActivity {
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
-
         int style = AlertDialog.THEME_HOLO_LIGHT;
 
         datePickerDialog = new DatePickerDialog(this, dateSetListener, year, month, day);

@@ -18,13 +18,20 @@ import com.example.project2.databinding.ActivityCustomerMainBinding;
 public class customer_main extends AppCompatActivity /*implements View.OnClickListener*/ {
 
     private ActivityCustomerMainBinding binding;
+    public String CustomerID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            CustomerID = bundle.getString("ID"); }
+
         binding = ActivityCustomerMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -40,8 +47,10 @@ public class customer_main extends AppCompatActivity /*implements View.OnClickLi
         Im.setOnClickListener(this);*/
     }
 
-
-   /* @Override
+    public String getCustomerID() {
+        return CustomerID;
+    }
+    /* @Override
     public void onClick(View v) {
         startActivity(new Intent(this,customer_booking.class) );
     }*/

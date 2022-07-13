@@ -8,7 +8,7 @@ enum JobType {notset, Carpenter, Electrician, Plumber, Gardener, Nanny,
     House_Keeping, Cook, Painter, AC_Repair};
 public class values {
     public final static String user_table = "users", customers_table = "customers"
-            , workers_table = "workers";
+            , workers_table = "workers", apps_table = "appointments";
     public static JobType getjob(String job)
     {
         if (job.equals("Carpenter"))
