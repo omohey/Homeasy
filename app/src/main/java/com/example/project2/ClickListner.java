@@ -8,4 +8,8 @@ public class ClickListner {
     {
 
     }
+    public void click(int index, int choice)
+    {
+
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.project2.ui.dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -28,6 +29,7 @@ import com.example.project2.R;
 import com.example.project2.Statuss;
 import com.example.project2.customer_booking;
 import com.example.project2.customer_main;
+import com.example.project2.customer_worker_requests;
 import com.example.project2.databinding.FragmentDashboardBinding;
 import com.example.project2.values;
 import com.google.android.material.navigation.NavigationView;
@@ -56,6 +58,7 @@ public class DashboardFragment extends Fragment implements NavigationView.OnNavi
     DatabaseReference databaseReference;
 
     List<AppointListPending> list;
+    List<Appointments> appointmentsList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -91,7 +94,11 @@ public class DashboardFragment extends Fragment implements NavigationView.OnNavi
         listner = new ClickListner() {
             @Override
             public void click(int index){
-                Toast.makeText(root.getContext(), "clicked item index is "+index,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(root.getContext(), "clicked item index is "+index,Toast.LENGTH_SHORT).show();
+                Appointments app = appointmentsList.get(index);
+                Intent i = new Intent(binding.getRoot().getContext(), customer_worker_requests.class);
+                i.putExtra("AppID", app.getAppID());
+                startActivity(i);
             }
         };
         adapter
@@ -126,6 +133,7 @@ public class DashboardFragment extends Fragment implements NavigationView.OnNavi
     private void getData()
     {
         list = new ArrayList<>();
+        appointmentsList = new ArrayList<>();
         DatabaseReference customerref = databaseReference.child(values.customers_table).child(customerID);
 
         customerref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -157,6 +165,7 @@ public class DashboardFragment extends Fragment implements NavigationView.OnNavi
                                     {
                                         AppointListPending appdisplay = new AppointListPending(app.getJobType(), app.getDate(), app.getDescription());
                                         list.add(appdisplay);
+                                        appointmentsList.add(app);
                                         adapter.notifyDataSetChanged();
                                     }
 

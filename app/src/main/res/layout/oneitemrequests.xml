@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="105dp">
+
+
+    <TextView
+        android:id="@+id/workerName"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:maxLines="1"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/ratingpic"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/workerName"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="7dp"
+        app:srcCompat="@android:drawable/btn_star" />
+
+    <TextView
+        android:id="@+id/ratingtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/workerName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/ratingpic"
+        android:gravity="center"
+        android:text="Rating"
+        android:textSize="16sp" />
+
+<ImageView
+    android:id="@+id/pricepic"
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:layout_below="@+id/ratingtext"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="7dp"
+    app:srcCompat="@drawable/money" />
+
+    <TextView
+        android:id="@+id/pricetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingtext"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/pricepic"
+        android:gravity="center"
+        android:text="Price"
+        android:textSize="16sp" />
+
+
+
+
+<TextView
+    android:id="@+id/border2"
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    android:layout_alignParentBottom="true"
+    android:background="#808080"/>
+
+    <Button
+        android:id="@+id/confirmbtn"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:text="Confirm" />
+    <Button
+        android:id="@+id/declinebtn"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/confirmbtn"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:text="Decline" />
+
+
+</RelativeLayout>

@@ -7,6 +7,7 @@
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/drawable/money_icon.xml" value="0.2465" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_customer_booking.xml" value="0.264" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_customer_main.xml" value="0.2" />
+        <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_customer_worker_requests.xml" value="0.264" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_login_page.xml" value="0.264" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_register_page.xml" value="0.22826086956521738" />
@@ -17,6 +18,7 @@
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_notifications.xml" value="0.25" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/oneitem.xml" value="0.4" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/oneitempending.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/oneitemrequests.xml" value="0.264" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
       </map>
     </option>

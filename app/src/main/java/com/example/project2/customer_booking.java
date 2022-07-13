@@ -112,6 +112,7 @@ public class customer_booking extends AppCompatActivity {
 
                 DatabaseReference Appsref = databaseReference.child(values.apps_table).push();
                 String AppointmentID = Appsref.getKey();
+                appointment.setAppID(AppointmentID);
                 Appsref.setValue(appointment);
 
                 DatabaseReference customerref = databaseReference.child(values.customers_table).child(customerID);
@@ -140,6 +141,7 @@ public class customer_booking extends AppCompatActivity {
                             customerref.updateChildren(m);
 
 
+                            Toast.makeText(customer_booking.this, "Appointment booking requested", Toast.LENGTH_SHORT).show();
                             customer_booking.this.finish();
 //                            Intent i = new Intent(customer_booking.this, DashboardFragment.class);
 //                            i.putExtra("ID", customerID);

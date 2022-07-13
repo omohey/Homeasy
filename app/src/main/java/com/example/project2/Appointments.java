@@ -1,9 +1,13 @@
 package com.example.project2;
 
+import java.util.List;
+
 public class Appointments {
-    String date, time, workerID, customerID, address, description, jobType;
+    String date, time, workerID, customerID, address, description, jobType, appID;
     int day, month, year, price;
     Statuss status;
+    List<String> requested_workers;
+    List<Float> requested_price;
     //float = customerRating, workerRating;
 
 
@@ -121,4 +125,27 @@ public class Appointments {
         this.price = price;
     }
 
+    public String getAppID() {
+        return appID;
+    }
+
+    public void setAppID(String appID) {
+        this.appID = appID;
+    }
+
+    public List<String> getRequested_workers() {
+        return requested_workers;
+    }
+
+    public void setRequested_workers(List<String> requested_workers) {
+        this.requested_workers = requested_workers;
+    }
+
+    public List<Float> getRequested_price() {
+        return requested_price;
+    }
+
+    public void setRequested_price(List<Float> requested_price) {
+        this.requested_price = requested_price;
+    }
 }
