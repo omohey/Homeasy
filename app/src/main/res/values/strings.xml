@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Homeasy</string>
+    <string name="title_activity_customer_main">customer_main</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Pending Appointments</string>
+    <string name="title_notifications">My Appointments</string>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "465560190469",
+    "project_id": "homeasy-3313e",
+    "storage_bucket": "homeasy-3313e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465560190469:android:b7ea8184e2989b91bca66c",
+        "android_client_info": {
+          "package_name": "com.example.project2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "465560190469-afekrnnsi1n2fdko3dr4fuj2ciubhen2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk4hC7k6RV2ADAQDNDZ3e5Xdzmz6CGoaQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "465560190469-afekrnnsi1n2fdko3dr4fuj2ciubhen2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="jobs_list" translatable="false">
+        <item>Carpenter</item>
+        <item>Electrician</item>
+        <item>Plumber</item>
+        <item>Gardener</item>
+        <item>Nanny</item>
+        <item>House Keeping</item>
+        <item>Cook</item>
+        <item>Painter</item>
+        <item>AC Repair</item>
+    </array>
+
+</resources>

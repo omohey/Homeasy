@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.home.HomeFragment" >
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/carpenterimage"
+            android:layout_width="138dp"
+            android:layout_height="147dp"
+            android:clickable="true"
+            android:src="@mipmap/carpenter_icon3" />
+
+        <ImageView
+            android:id="@+id/electrician_image"
+            android:layout_width="138dp"
+            android:layout_height="147dp"
+            android:clickable="true"
+            android:src="@mipmap/electrician_icon2" />
+
+        <ImageView
+            android:id="@+id/plumber_image"
+            android:layout_width="136dp"
+            android:layout_height="147dp"
+            android:clickable="true"
+            android:src="@mipmap/plumber_icon2" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/gardner_image"
+            android:layout_width="139dp"
+            android:layout_height="131dp"
+            android:clickable="true"
+            android:src="@mipmap/gardener_icon2" />
+
+        <ImageView
+            android:id="@+id/nanny_image"
+            android:layout_width="136dp"
+            android:layout_height="131dp"
+            android:clickable="true"
+            android:src="@mipmap/nanny_icon2" />
+
+        <ImageView
+            android:id="@+id/housekeeping_image"
+            android:layout_width="135dp"
+            android:layout_height="131dp"
+            android:clickable="true"
+            android:src="@mipmap/maid_icon4" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/cook_image"
+            android:layout_width="138dp"
+            android:layout_height="121dp"
+            android:clickable="true"
+            android:src="@mipmap/painter_icon3" />
+
+        <ImageView
+            android:id="@+id/painter_image"
+            android:layout_width="138dp"
+            android:layout_height="121dp"
+            android:clickable="true"
+            android:src="@mipmap/painter_icon2" />
+
+        <ImageView
+            android:id="@+id/ac_image"
+            android:layout_width="137dp"
+            android:layout_height="121dp"
+            android:clickable="true"
+            android:src="@mipmap/ac_icon2" />
+    </TableRow>
+</LinearLayout>
