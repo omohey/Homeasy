@@ -2,9 +2,10 @@ package com.example.project2;
 
 public class Appointments {
     String date, time, workerID, customerID, address, description, jobType;
-    int day, month, year;
+    int day, month, year, price;
     Status status;
     //float = customerRating, workerRating;
+
 
 
     public Appointments() {
@@ -112,4 +113,12 @@ public class Appointments {
     public void setStatus(Status status) {
         this.status = status;
     }
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
 }
