@@ -70,12 +70,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if (TextUtils.isEmpty(Username))
             {
-                Toast.makeText(this, "Username field is empty", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Username field is empty!", Toast.LENGTH_SHORT).show();
                 return;
             }
             if (TextUtils.isEmpty(Password))
             {
-                Toast.makeText(this, "Password field is empty", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Password field is empty!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
