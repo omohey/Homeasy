@@ -53,6 +53,9 @@ public class workers_main extends AppCompatActivity {
         seeapps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(workers_main.this, worker_appointments.class);
+                i.putExtra("ID", ID);
+                startActivity(i);
                 /*Intent i = new Intent(workers_main.this, worker_requests.class);
                 i.putExtra("ID", ID);
                 startActivity(i);*/

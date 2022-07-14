@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="130dp">
+
+
+    <TextView
+        android:layout_width="200dp"
+        android:id="@+id/customerName"
+        android:textSize="16sp"
+        android:layout_marginStart="20dp"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:layout_marginEnd="20dp"
+        android:maxLines="1"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/date_pic"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/customerName"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="7dp"
+        app:srcCompat="@drawable/date_icon" />
+
+    <TextView
+        android:id="@+id/date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/customerName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toEndOf="@+id/date_pic"
+        android:gravity="center"
+        android:text="Date"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/timepic"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/date_text"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="7dp"
+        app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
+
+    <TextView
+        android:id="@+id/time_text"
+        android:layout_toEndOf="@+id/timepic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date_text"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:gravity="center"
+        android:text="Time"
+        android:textSize="16sp"/>
+
+    <ImageView
+        android:id="@+id/locationpic"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/time_text"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="7dp"
+        app:srcCompat="@drawable/pin" />
+
+    <TextView
+        android:id="@+id/location_text"
+        android:layout_toEndOf="@+id/locationpic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/time_text"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:gravity="center"
+        android:text="Location"
+        android:textSize="16sp"/>
+
+
+    <TextView
+        android:id="@+id/border2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_alignParentBottom="true"
+        android:background="#808080"/>
+
+
+</RelativeLayout>
