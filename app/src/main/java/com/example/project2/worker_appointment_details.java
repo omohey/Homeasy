@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -87,46 +88,63 @@ public class worker_appointment_details extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseReference appointmentref = databaseReference.child(values.apps_table).child(AppID);
-                appointmentref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        CurrentAppointment = snapshot.getValue(Appointments.class);
-                        List<String> workers = CurrentAppointment.getRequested_workers();
-                        if (workers == null)
-                            workers = new ArrayList<>();
-                        workers.add(WorkerID);
-                        CurrentAppointment.setRequested_workers(workers);
-                        List<Float> prices = CurrentAppointment.getRequested_price();
-                        if (prices == null)
-                            prices = new ArrayList<>();
-                        prices.add(Float.parseFloat(PriceEdit.getText().toString()));
-                        CurrentAppointment.setRequested_price(prices);
-                        CurrentAppointment.setStatus(Statuss.worker_accepted);
-                        appointmentref.setValue(CurrentAppointment);
-                        Toast.makeText(worker_appointment_details.this, "Appointment request sent", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(PriceEdit.getText().toString()))
+                {
+                    Toast.makeText(worker_appointment_details.this, "Price field is empty!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else
+                {
+                    DatabaseReference appointmentref = databaseReference.child(values.apps_table).child(AppID);
+                    appointmentref.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            CurrentAppointment = snapshot.getValue(Appointments.class);
+                            List<String> workers = CurrentAppointment.getRequested_workers();
+                            if (workers == null)
+                                workers = new ArrayList<>();
+                            workers.add(WorkerID);
+                            CurrentAppointment.setRequested_workers(workers);
+                            List<Float> prices = CurrentAppointment.getRequested_price();
+                            if (prices == null)
+                                prices = new ArrayList<>();
+                            prices.add(Float.parseFloat(PriceEdit.getText().toString()));
+                            CurrentAppointment.setRequested_price(prices);
+                            CurrentAppointment.setStatus(Statuss.worker_accepted);
+                            appointmentref.setValue(CurrentAppointment);
+                            Toast.makeText(worker_appointment_details.this, "Appointment request sent", Toast.LENGTH_SHORT).show();
 
-                        List<String> workerapps = worker.getAppointmentsrequested();
-                        if (workerapps == null)
-                            workerapps = new ArrayList<>();
+                            List<String> workerapps = worker.getAppointmentsrequested();
+                            if (workerapps == null)
+                                workerapps = new ArrayList<>();
 
-                        workerapps.add(AppID);
-                        worker.setAppointmentsrequested(workerapps);
+                            workerapps.add(AppID);
+                            worker.setAppointmentsrequested(workerapps);
 
-                        workerref.setValue(worker);
+                            workerref.setValue(worker);
 
+                            Intent gotoScreenVar = new Intent(worker_appointment_details.this, workers_main.class);
 
-                        Intent intent = new Intent(worker_appointment_details.this, workers_main.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        startActivity(intent);
+                            gotoScreenVar.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                            gotoScreenVar.putExtra("ID", WorkerID);
+                            startActivity(gotoScreenVar);
+
+//                            Intent intent = new Intent(worker_appointment_details.this, workers_main.class);
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//                            startActivity(intent);
 //                        worker_appointment_details.this.finish();
-                    }
+                        }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+                        }
+                    });
+                }
+
+
+
 
             }
         });

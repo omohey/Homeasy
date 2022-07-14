@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,9 @@ public class customer_worker_requests extends AppCompatActivity {
 
     List<AppointListRequests> list;
 
+    List<String> workersRequested;
+    List<Float> requestedprices;
+
 //    List<Appointments> appointmentsList;
 
     @Override
@@ -66,6 +70,15 @@ public class customer_worker_requests extends AppCompatActivity {
         listner = new ClickListner() {
             @Override
             public void click(int index, int choice){
+                if (choice == 0)
+                {
+                    accept(index);
+                }
+                else
+                {
+                    decline(index);
+                }
+
                 //Toast.makeText(root.getContext(), "clicked item index is "+index,Toast.LENGTH_SHORT).show();
 
             }
@@ -89,8 +102,8 @@ public class customer_worker_requests extends AppCompatActivity {
                 address.setText("Address: "+appointment.getAddress());
                 jobdescription.setText("Job description: " + appointment.getDescription());
 
-                List<String> workersRequested = appointment.getRequested_workers();
-                List<Float> requestedprices = appointment.getRequested_price();
+                workersRequested = appointment.getRequested_workers();
+                requestedprices = appointment.getRequested_price();
                 if (workersRequested == null)
                 {
                     Toast.makeText(customer_worker_requests.this, "No workers accepted yet",Toast.LENGTH_LONG).show();
@@ -128,5 +141,89 @@ public class customer_worker_requests extends AppCompatActivity {
         });
 
 
+    }
+
+    public void decline(int index)
+    {
+        String WorkerID = workersRequested.get(index);
+        workersRequested.remove(index);
+        list.remove(index);
+        requestedprices.remove(index);
+        DatabaseReference appointmentref = databaseReference.child(values.apps_table).child(AppID);
+        appointmentref.child("requested_price").setValue(requestedprices);
+        appointmentref.child("requested_workers").setValue(workersRequested);
+        if (workersRequested.size() == 0)
+        {
+            appointmentref.child("status").setValue(Statuss.requested);
+        }
+
+        DatabaseReference workerref = databaseReference.child(values.workers_table).child(WorkerID);
+        workerref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Worker worker = snapshot.getValue(Worker.class);
+                List<String> workerapps = worker.getAppointmentsrequested();
+                workerapps.remove(workerapps.indexOf(AppID));
+                workerref.child("appointmentsrequested").setValue(workerapps);
+                customer_worker_requests.this.finish();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+    public void accept(int index)
+    {
+        String WorkerID = workersRequested.get(index);
+        DatabaseReference appointmentref = databaseReference.child(values.apps_table).child(AppID);
+        appointmentref.child("workerID").setValue(WorkerID);
+        appointmentref.child("status").setValue(Statuss.customer_accepted);
+
+
+        DatabaseReference workersref = databaseReference.child(values.workers_table);
+        workersref.child(WorkerID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Worker worker = snapshot.getValue(Worker.class);
+                List<String> workerapps = worker.getAppointmentsrequested();
+                List<String> workeracceptedapps = worker.getAppointments();
+                if (workeracceptedapps == null)
+                    workeracceptedapps = new ArrayList<>();
+                workerapps.remove(workerapps.indexOf(AppID));
+                workeracceptedapps.add(AppID);
+                workersref.child(WorkerID).child("appointments").setValue(workeracceptedapps);
+                workersref.child(WorkerID).child("appointmentsrequested").setValue(workerapps);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        workersRequested.remove(index);
+
+        for (String x : workersRequested)
+        {
+            workersref.child(x).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Worker worker = snapshot.getValue(Worker.class);
+                    List<String> workerapps = worker.getAppointmentsrequested();
+                    workerapps.remove(workerapps.indexOf(AppID));
+                    workersref.child(x).child("appointmentsrequested").setValue(workerapps);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+        Intent intent = new Intent(customer_worker_requests.this, customer_main.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
     }
 }
