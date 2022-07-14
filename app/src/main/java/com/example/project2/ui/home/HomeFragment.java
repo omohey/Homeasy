@@ -34,6 +34,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         customer_main activity = (customer_main) getActivity();
         customerID = activity.getCustomerID();
 
+
+
+
         //final TextView textView = binding.textHome;
         //homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         ImageView Im = (ImageView) root.findViewById(R.id.carpenterimage);
@@ -63,6 +66,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onDestroyView();
         binding = null;
     }
+
+
 
     @Override
     public void onClick(View v) {
