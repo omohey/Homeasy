@@ -15,4 +15,16 @@ public class AppointListWorkerReq {
         Date = date;
         Description = description;
     }
+
+    public String getName() {
+        return Name;
+    }
+
+    public String getRating() {
+        return Rating;
+    }
+
+    public String getDate() {
+        return Date;
+    }
 }

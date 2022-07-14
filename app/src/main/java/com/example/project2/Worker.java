@@ -2,11 +2,21 @@ package com.example.project2;
 
 import com.example.project2.User;
 
+import java.util.List;
 
 
 public class Worker extends User {
         JobType jobType;
         String Name, Phone;
+        List<String> Appointmentsrequested;
+
+    public List<String> getAppointmentsrequested() {
+        return Appointmentsrequested;
+    }
+
+    public void setAppointmentsrequested(List<String> appointmentsrequested) {
+        Appointmentsrequested = appointmentsrequested;
+    }
 
     public String getName() {
         return Name;

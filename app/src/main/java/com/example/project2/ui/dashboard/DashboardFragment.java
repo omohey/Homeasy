@@ -161,7 +161,7 @@ public class DashboardFragment extends Fragment implements NavigationView.OnNavi
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     Appointments app = snapshot.getValue(Appointments.class);
-                                    if (app.getStatus().equals(Statuss.requested) )
+                                    if (app.getStatus().equals(Statuss.requested) || app.getStatus().equals(Statuss.worker_accepted) )
                                     {
                                         AppointListPending appdisplay = new AppointListPending(app.getJobType(), app.getDate(), app.getDescription());
                                         list.add(appdisplay);
