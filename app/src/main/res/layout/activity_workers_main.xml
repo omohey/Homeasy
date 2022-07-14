@@ -31,7 +31,7 @@ tools:context=".workers_main">
         app:layout_constraintVertical_bias="0.424" />
 
     <Button
-    android:id="@+id/button3"
+    android:id="@+id/viewworkerreqbtn"
     android:layout_width="239dp"
     android:layout_height="56dp"
     android:layout_marginTop="408dp"
@@ -41,7 +41,7 @@ tools:context=".workers_main">
     app:layout_constraintTop_toTopOf="parent" />
 
 <Button
-    android:id="@+id/button4"
+    android:id="@+id/myappsworkerbtn"
     android:layout_width="239dp"
     android:layout_height="56dp"
     android:layout_marginTop="48dp"
@@ -50,6 +50,6 @@ tools:context=".workers_main">
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.505"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/button3"
+    app:layout_constraintTop_toBottomOf="@+id/viewworkerreqbtn"
     app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

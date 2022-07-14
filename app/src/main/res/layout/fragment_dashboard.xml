@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     android:layout_marginTop="0dp"
     android:layout_marginBottom="50dp"
     tools:context=".ui.dashboard.DashboardFragment">

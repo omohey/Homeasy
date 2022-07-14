@@ -34,5 +34,29 @@ public class values {
         else
             return JobType.notset;
     }
+
+    public static String getjobstring(JobType job)
+    {
+        if (job.equals(JobType.Carpenter))
+            return "Carpenter";
+        else if (job.equals(JobType.Electrician))
+            return "Electrician";
+        else if (job.equals(JobType.Plumber))
+            return "Plumber";
+        else if (job.equals(JobType.Gardener))
+            return "Gardener";
+        else if (job.equals(JobType.Nanny))
+            return "Nanny";
+        else if (job.equals(JobType.House_Keeping))
+            return "House Keeping";
+        else if (job.equals(JobType.Cook))
+            return "Cook";
+        else if (job.equals(JobType.Painter))
+            return "Painter";
+        else if (job.equals(JobType.AC_Repair))
+            return "AC Repair";
+        else
+            return "Error";
+    }
 }
 

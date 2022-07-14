@@ -3,7 +3,10 @@ package com.example.project2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +37,28 @@ public class workers_main extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             ID = bundle.getString("ID"); }
+
+
+        Button seerequests = (Button) findViewById(R.id.viewworkerreqbtn);
+        seerequests.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(workers_main.this, worker_requests.class);
+                i.putExtra("ID", ID);
+                startActivity(i);
+            }
+        });
+
+        Button seeapps = (Button) findViewById(R.id.myappsworkerbtn);
+        seeapps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*Intent i = new Intent(workers_main.this, worker_requests.class);
+                i.putExtra("ID", ID);
+                startActivity(i);*/
+            }
+        });
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -67,6 +92,8 @@ public class workers_main extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 }
