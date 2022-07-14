@@ -59,10 +59,10 @@ public class ImageGalleryAdapter2 extends RecyclerView.Adapter<AppointmentViewHo
         final int index = viewHolder.getAdapterPosition();
         viewHolder.WorkerName
                 .setText(list.get(position).name);
-        viewHolder.Rating
-                .setText(list.get(position).rating);
-        viewHolder.Price
-                .setText(list.get(position).price);
+        viewHolder.Date
+                .setText(list.get(position).date);
+        viewHolder.Time
+                .setText(list.get(position).time);
         viewHolder.Jobtype.setText(list.get(position).Job);
         viewHolder.view.setOnClickListener(new View.OnClickListener() {
             @Override

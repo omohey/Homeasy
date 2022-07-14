@@ -8,12 +8,14 @@ public class Appointments {
     Statuss status;
     List<String> requested_workers;
     List<Float> requested_price;
+    Boolean workerRated, customerRated;
     //float = customerRating, workerRating;
 
 
 
     public Appointments() {
-
+        workerRated = false;
+        customerRated = false;
     }
 
     public Appointments(String date, String time, String workerID, String customerID, String address, String description, String jobType, int day, int month, int year, Statuss status) {
@@ -28,6 +30,8 @@ public class Appointments {
         this.month = month;
         this.year = year;
         this.status = status;
+        workerRated = false;
+        customerRated = false;
     }
 
     public String getDate() {
@@ -147,5 +151,21 @@ public class Appointments {
 
     public void setRequested_price(List<Float> requested_price) {
         this.requested_price = requested_price;
+    }
+
+    public Boolean getWorkerRated() {
+        return workerRated;
+    }
+
+    public void setWorkerRated(Boolean workerRated) {
+        this.workerRated = workerRated;
+    }
+
+    public Boolean getCustomerRated() {
+        return customerRated;
+    }
+
+    public void setCustomerRated(Boolean customerRated) {
+        this.customerRated = customerRated;
     }
 }

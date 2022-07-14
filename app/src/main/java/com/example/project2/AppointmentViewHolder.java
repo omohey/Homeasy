@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class AppointmentViewHolder  extends RecyclerView.ViewHolder {
     TextView WorkerName;
-    TextView Price;
-    TextView Rating;
+    TextView Date;
+    TextView Time;
     TextView Jobtype;
     View view;
 
@@ -18,12 +18,12 @@ public class AppointmentViewHolder  extends RecyclerView.ViewHolder {
         WorkerName
                 = (TextView)itemView
                 .findViewById(R.id.workerName);
-        Rating
+        Date
                 = (TextView)itemView
-                .findViewById(R.id.ratingtext);
-        Price
+                .findViewById(R.id.date_text);
+        Time
                 = (TextView)itemView
-                .findViewById(R.id.pricetext);
+                .findViewById(R.id.time_text);
         Jobtype = (TextView) itemView.findViewById(R.id.jobtypetext);
         view  = itemView;
     }

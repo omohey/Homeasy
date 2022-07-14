@@ -2,17 +2,17 @@ package com.example.project2;
 
 public class AppointListData {
     String name;
-    String rating;
-    String price;
+    String date;
+    String time;
     String Job;
 
     public AppointListData(String name,
-                           String rating,
-                           String price, String Job)
+                           String date,
+                           String time, String Job)
     {
         this.name = name;
-        this.rating = rating;
-        this.price = price;
+        this.date = date;
+        this.time = time;
         this.Job = Job;
     }
 }
