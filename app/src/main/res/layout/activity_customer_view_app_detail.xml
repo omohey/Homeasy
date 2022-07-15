@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".CustomerViewAppDetail">
+
+<ImageView
+    android:id="@+id/imageView"
+    android:layout_width="157dp"
+    android:layout_height="215dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/homeasy_logo" />
+
+<TextView
+    android:id="@+id/workerName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="15dp"
+    android:text="Worker name:"
+    android:textSize="20sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+<TextView
+    android:id="@+id/rating_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="15dp"
+    android:text="Rating:"
+    android:textSize="20sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/workerName" />
+
+<ImageView
+    android:id="@+id/ratingpic"
+    android:layout_width="28dp"
+    android:layout_height="28dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="15dp"
+    app:layout_constraintStart_toEndOf="@+id/rating_text"
+    app:layout_constraintTop_toBottomOf="@+id/workerName"
+    app:srcCompat="@android:drawable/btn_star" />
+
+<TextView
+    android:id="@+id/jobtype"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="15dp"
+    android:text="Job type:"
+    android:textSize="20sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/rating_text" />
+
+<TextView
+    android:id="@+id/date_time"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Date:"
+    android:layout_marginLeft="10dp"
+    android:textSize="20sp"
+    android:layout_marginTop="15dp"
+
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/jobtype" />
+
+<TextView
+    android:id="@+id/description_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="15dp"
+    android:inputType="textMultiLine"
+    android:text="Description:"
+    android:textSize="20sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/date_time" />
+
+<TextView
+    android:id="@+id/price_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Price: "
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="15dp"
+    android:textSize="20sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/description_text" />
+
+    <Button
+        android:id="@+id/ratebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Rate"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.733"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+    <TextView
+        android:id="@+id/rate_rated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:text="Rate: "
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price_text" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:numStars="5"
+        android:progressTint="#019444"
+        android:rating="0"
+        android:stepSize="1"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/rate_rated"
+        app:layout_constraintTop_toBottomOf="@+id/price_text" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

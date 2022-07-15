@@ -21,6 +21,7 @@ import com.example.project2.AppointListPending;
 import com.example.project2.Appointments;
 import com.example.project2.ClickListner;
 import com.example.project2.Customer;
+import com.example.project2.CustomerViewAppDetail;
 import com.example.project2.GalleryAdapterPending;
 import com.example.project2.ImageGalleryAdapter2;
 import com.example.project2.R;
@@ -82,6 +83,10 @@ public class NotificationsFragment extends Fragment {
         listner = new ClickListner() {
             @Override
             public void click(int index){
+                String AppID = appointmentsList.get(index);
+                Intent i = new Intent(binding.getRoot().getContext(), CustomerViewAppDetail.class);
+                i.putExtra("AppID", AppID);
+                startActivity(i);
                 //Toast.makeText(root.getContext(), "clicked item index is "+index,Toast.LENGTH_SHORT).show();
                 /*Appointments app = appointmentsList.get(index);
                 Intent i = new Intent(binding.getRoot().getContext(), customer_worker_requests.class);

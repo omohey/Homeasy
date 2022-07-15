@@ -178,10 +178,12 @@ public class customer_worker_requests extends AppCompatActivity {
     public void accept(int index)
     {
         String WorkerID = workersRequested.get(index);
+        int price = requestedprices.get(index).intValue();
+
         DatabaseReference appointmentref = databaseReference.child(values.apps_table).child(AppID);
         appointmentref.child("workerID").setValue(WorkerID);
         appointmentref.child("status").setValue(Statuss.customer_accepted);
-
+        appointmentref.child("price").setValue(price);
 
         DatabaseReference workersref = databaseReference.child(values.workers_table);
         workersref.child(WorkerID).addListenerForSingleValueEvent(new ValueEventListener() {

@@ -9,6 +9,7 @@ public class Appointments {
     List<String> requested_workers;
     List<Float> requested_price;
     Boolean workerRated, customerRated;
+    int workergotrated, customergotrated;
     //float = customerRating, workerRating;
 
 
@@ -167,5 +168,21 @@ public class Appointments {
 
     public void setCustomerRated(Boolean customerRated) {
         this.customerRated = customerRated;
+    }
+
+    public int getWorkergotrated() {
+        return workergotrated;
+    }
+
+    public void setWorkergotrated(int workergotrated) {
+        this.workergotrated = workergotrated;
+    }
+
+    public int getCustomergotrated() {
+        return customergotrated;
+    }
+
+    public void setCustomergotrated(int customergotrated) {
+        this.customergotrated = customergotrated;
     }
 }
