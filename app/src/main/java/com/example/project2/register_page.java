@@ -158,32 +158,42 @@ public class register_page extends AppCompatActivity implements View.OnClickList
 
     private void addcustomerorworker() {
 
-        DatabaseReference curuserref = databaseReference.child(values.user_table).push();
+        /*DatabaseReference curuserref = databaseReference.child(values.user_table).push();
         String userID = curuserref.getKey();
         user.setID(userID);
         user.setType(type);
-        curuserref.setValue(user);
-        if (user.getType() == UserType.Customer)
+        curuserref.setValue(user);*/
+        if (type == UserType.Customer)
         {
-            Customer customer = new Customer(user, Name, Phone);
+            /*Customer customer = new Customer(user, Name, Phone);
             DatabaseReference customersref = databaseReference.child(values.customers_table);
             Map<String, Object> m = new HashMap();
             m.put(user.getID(), customer);
-            customersref.updateChildren(m);
-            Intent i = new Intent(register_page.this, customer_main.class);
-            i.putExtra("ID", customer.getID());
+            customersref.updateChildren(m);*/
+            Intent i = new Intent(register_page.this, verify_phone.class);
+            i.putExtra("type", "C");
+            i.putExtra("Phone", Phone);
+            i.putExtra("User", Username);
+            i.putExtra("Pass", Password);
+            i.putExtra("Name", Name);
             startActivity(i);
         }
         else
         {
             String jobtype = spin.getSelectedItem().toString();
-            Worker worker = new Worker(user,values.getjob(jobtype) ,  Name, Phone);
+            /*Worker worker = new Worker(user,values.getjob(jobtype) ,  Name, Phone);
             DatabaseReference workersref = databaseReference.child(values.workers_table);
             Map<String, Object> m = new HashMap();
             m.put(user.getID(), worker);
-            workersref.updateChildren(m);
-            Intent i = new Intent(register_page.this, workers_main.class);
-            i.putExtra("ID", worker.getID());
+            workersref.updateChildren(m);*/
+            Intent i = new Intent(register_page.this, verify_phone.class);
+//            i.putExtra("ID", worker.getID());
+            i.putExtra("type", "W");
+            i.putExtra("Phone", Phone);
+            i.putExtra("User", Username);
+            i.putExtra("Pass", Password);
+            i.putExtra("Name", Name);
+            i.putExtra("jobtype", jobtype);
             startActivity(i);
         }
     }
