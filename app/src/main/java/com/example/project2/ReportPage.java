@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.project2.ui.Report;
+import com.example.project2.Report;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +33,7 @@ public class ReportPage extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
 
     DatabaseReference databaseReference;
+    String type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,7 @@ public class ReportPage extends AppCompatActivity {
             reporterID = bundle.getString("reporterID"); //handle in previous page
             reportedID = bundle.getString("reportedID");
             appID = bundle.getString("appID");
+            type = bundle.getString("type");
         }
 
 
@@ -73,6 +75,23 @@ public class ReportPage extends AppCompatActivity {
                 String reportID = reportsRef.getKey();
                 report.setReportID(reportID);
                 reportsRef.setValue(report);
+
+                Intent gotoScreenVar;
+                if (type.equals("C"))
+                {
+                    gotoScreenVar = new Intent(ReportPage.this, CustomerViewAppDetail.class);
+                    gotoScreenVar.putExtra("AppID", appID);
+                }
+                else
+                {
+                    gotoScreenVar = new Intent(ReportPage.this, workers_main.class);
+                    gotoScreenVar.putExtra("ID", reporterID);
+                }
+
+                gotoScreenVar.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+
+                startActivity(gotoScreenVar);
 
 
             }

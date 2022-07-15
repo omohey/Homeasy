@@ -98,6 +98,7 @@ public class DashboardFragment extends Fragment implements NavigationView.OnNavi
                 Appointments app = appointmentsList.get(index);
                 Intent i = new Intent(binding.getRoot().getContext(), customer_worker_requests.class);
                 i.putExtra("AppID", app.getAppID());
+                i.putExtra("CustID", customerID);
                 startActivity(i);
             }
         };

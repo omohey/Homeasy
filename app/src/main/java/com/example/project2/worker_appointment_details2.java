@@ -78,6 +78,7 @@ public class worker_appointment_details2 extends AppCompatActivity {
                 i.putExtra("appID", AppID);
                 i.putExtra("reportedID", CurrentAppointment.getCustomerID());
                 i.putExtra("reporterID", CurrentAppointment.getWorkerID());
+                i.putExtra("type", "W");
                 startActivity(i);
             }
         });

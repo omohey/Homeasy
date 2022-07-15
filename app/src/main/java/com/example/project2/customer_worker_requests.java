@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.project2.ui.home.HomeFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +24,7 @@ public class customer_worker_requests extends AppCompatActivity {
 
     TextView jobtype, date, address, jobdescription;
 
-    String AppID;
+    String AppID, CustomerID;
 
     FirebaseDatabase firebaseDatabase;
 
@@ -55,6 +56,7 @@ public class customer_worker_requests extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             AppID = bundle.getString("AppID");
+            CustomerID = bundle.getString("CustID");
         }
 
         list = new ArrayList<>();
@@ -224,8 +226,15 @@ public class customer_worker_requests extends AppCompatActivity {
                 }
             });
         }
-        Intent intent = new Intent(customer_worker_requests.this, customer_main.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivity(intent);
+//        Intent intent = new Intent(customer_worker_requests.this, HomeFragment.class);
+////        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        startActivity(intent);
+        Intent gotoScreenVar = new Intent(customer_worker_requests.this, customer_main.class);
+
+        gotoScreenVar.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        gotoScreenVar.putExtra("ID", CustomerID);
+        startActivity(gotoScreenVar);
     }
 }

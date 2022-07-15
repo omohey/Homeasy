@@ -1,4 +1,4 @@
-package com.example.project2.ui;
+package com.example.project2;
 
 public class Report {
     String reportID, reporterID, reportedID, description, appID;

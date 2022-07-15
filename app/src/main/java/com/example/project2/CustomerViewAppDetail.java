@@ -72,6 +72,7 @@ public class CustomerViewAppDetail extends AppCompatActivity {
                 i.putExtra("appID", AppID);
                 i.putExtra("reportedID", CurrentAppointment.getWorkerID());
                 i.putExtra("reporterID", CurrentAppointment.getCustomerID());
+                i.putExtra("type", "C");
                 startActivity(i);
             }
         });
