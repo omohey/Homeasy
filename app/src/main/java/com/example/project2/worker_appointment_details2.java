@@ -17,16 +17,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
-public class CustomerViewAppDetail extends AppCompatActivity {
-
+public class worker_appointment_details2 extends AppCompatActivity {
     String AppID;
     Appointments CurrentAppointment;
-    TextView WorkerName, Rating, JobType, Date, Description, Price, Rate_Rated;
+    TextView CustomerName, Rating, Status, Date, Description, Price, Rate_Rated;
     RatingBar ratingBar;
     Button Ratebtn;
+    String Req_Con;
+    String WorkerID;
 
     FirebaseDatabase firebaseDatabase;
 
@@ -38,15 +39,17 @@ public class CustomerViewAppDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_view_app_detail);
+        setContentView(R.layout.activity_worker_appointment_details2);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             AppID = bundle.getString("AppID");
+            Req_Con = bundle.getString("status");
+            WorkerID = bundle.getString("WorkerID");
         }
-        WorkerName = (TextView) findViewById(R.id.workerName);
+        CustomerName = (TextView) findViewById(R.id.customerName);
         Rating = (TextView) findViewById(R.id.rating_text);
-        JobType = (TextView) findViewById(R.id.jobtype);
+        Status = (TextView) findViewById(R.id.status);
         Date = (TextView) findViewById(R.id.date_time);
         Description = (TextView) findViewById(R.id.description_text);
         Price = (TextView) findViewById(R.id.price_text);
@@ -64,6 +67,7 @@ public class CustomerViewAppDetail extends AppCompatActivity {
 
         appoinmentref = databaseReference.child(values.apps_table).child(AppID);
 
+
         Ratebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,24 +75,24 @@ public class CustomerViewAppDetail extends AppCompatActivity {
                 int ratingint = rating.intValue();
                 if (ratingint == 0)
                 {
-                    Toast.makeText(CustomerViewAppDetail.this, "Please enter a rating of atleast 1", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(worker_appointment_details2.this, "Please enter a rating of atleast 1", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 else
                 {
-                    appoinmentref.child("customerRated").setValue(true);
-                    appoinmentref.child("workergotrated").setValue(ratingint);
-                    DatabaseReference workerref = databaseReference.child(values.workers_table).child(CurrentAppointment.getWorkerID());
-                    workerref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    appoinmentref.child("workerRated").setValue(true);
+                    appoinmentref.child("customergotrated").setValue(ratingint);
+                    DatabaseReference customerref = databaseReference.child(values.customers_table).child(CurrentAppointment.getCustomerID());
+                    customerref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            Worker worker = snapshot.getValue(Worker.class);
-                            float workerrating = worker.getRating();
-                            int norated = worker.getNorated();
-                            float newrating = (workerrating * norated + ratingint)/(norated+1);
+                            Customer customer = snapshot.getValue(Customer.class);
+                            float customerrating = customer.getRating();
+                            int norated = customer.getNorated();
+                            float newrating = (customerrating * norated + ratingint)/(norated+1);
                             norated = norated+1;
-                            workerref.child("norated").setValue(norated);
-                            workerref.child("rating").setValue(newrating);
+                            customerref.child("norated").setValue(norated);
+                            customerref.child("rating").setValue(newrating);
                             refresh();
 
                         }
@@ -103,8 +107,9 @@ public class CustomerViewAppDetail extends AppCompatActivity {
             }
         });
 
-
         refresh();
+
+
     }
 
     public Boolean isDatePassed(int day, int month, int year)
@@ -124,17 +129,36 @@ public class CustomerViewAppDetail extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 CurrentAppointment = snapshot.getValue(Appointments.class);
-                String jobtype = CurrentAppointment.getJobType();
+                String status;
+                if (Req_Con.equals("Req"))
+                    status = "Requested";
+                else
+                    status = "Confirmed";
                 String date = CurrentAppointment.getDate() + " at " + CurrentAppointment.getTime();
                 String description = CurrentAppointment.getDescription();
-                String price = Integer.toString(CurrentAppointment.getPrice());
-                JobType.setText("Job type: " +jobtype);
+                String price = "";
+                if (status.equals("Requested"))
+                {
+                    List<Float> prices = CurrentAppointment.getRequested_price();
+                    List<String> workers = CurrentAppointment.getRequested_workers();
+                    price = Float.toString(prices.get(workers.indexOf(WorkerID)));
+
+                }
+                else
+                {
+                    price = Integer.toString(CurrentAppointment.getPrice());
+                }
+
+
+                Status.setText("Status: " + status);
                 Date.setText("Date and time: " + date);
                 Description.setText("Description: " + description);
-                Price.setText("Price: " +price);
+                Price.setText("Price: " + price);
                 if (CurrentAppointment.getStatus().equals(Statuss.completed))
                 {
-                    if (CurrentAppointment.customerRated == false)
+                    status = "Completed";
+                    Status.setText("Status: " + status);
+                    if (CurrentAppointment.getWorkerRated() == false)
                     {
                         Rate_Rated.setText("Rate:");
                         Rate_Rated.setVisibility(View.VISIBLE);
@@ -147,7 +171,7 @@ public class CustomerViewAppDetail extends AppCompatActivity {
                         Rate_Rated.setText("Rated:");
                         Rate_Rated.setVisibility(View.VISIBLE);
                         ratingBar.setVisibility(View.VISIBLE);
-                        ratingBar.setRating(CurrentAppointment.getWorkergotrated());
+                        ratingBar.setRating(CurrentAppointment.getCustomergotrated());
                         ratingBar.setEnabled(false);
                         Ratebtn.setVisibility(View.VISIBLE);
                         Ratebtn.setEnabled(false);
@@ -156,19 +180,21 @@ public class CustomerViewAppDetail extends AppCompatActivity {
                 else if (isDatePassed(CurrentAppointment.getDay(), CurrentAppointment.getMonth(), CurrentAppointment.getYear()))
                 {
                     appoinmentref.child("status").setValue(Statuss.completed);
+                    status = "Completed";
+                    Status.setText("Status: " + status);
                     CurrentAppointment.setStatus(Statuss.completed);
                     Rate_Rated.setText("Rate:");
                     Rate_Rated.setVisibility(View.VISIBLE);
                     ratingBar.setVisibility(View.VISIBLE);
                     Ratebtn.setVisibility(View.VISIBLE);
                 }
-                DatabaseReference workerref = databaseReference.child(values.workers_table).child(CurrentAppointment.workerID);
-                workerref.addListenerForSingleValueEvent(new ValueEventListener() {
+                DatabaseReference customerref = databaseReference.child(values.customers_table).child(CurrentAppointment.getCustomerID());
+                customerref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Worker worker = snapshot.getValue(Worker.class);
-                        WorkerName.setText("Name: "+ worker.getName());
-                        Float rating = worker.getRating();
+                        Customer customer = snapshot.getValue(Customer.class);
+                        CustomerName.setText("Name: "+ customer.getName());
+                        Float rating = customer.getRating();
                         Rating.setText("Rating: " + rating.toString());
 
                     }

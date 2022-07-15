@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.firebase.database.DataSnapshot;
@@ -57,6 +58,15 @@ public class worker_appointments extends AppCompatActivity {
         listner = new ClickListner() {
             @Override
             public void click(int index){
+                String AppID = allappointments.get(index);
+                Intent i = new Intent(worker_appointments.this, worker_appointment_details2.class);
+                i.putExtra("AppID", AppID);
+                i.putExtra("WorkerID", ID);
+                if (requestedappslist == null || index >= requestedappslist.size())
+                    i.putExtra("status", "Con");
+                else
+                    i.putExtra("status", "Req");
+                startActivity(i);
                 //Toast.makeText(root.getContext(), "clicked item index is "+index,Toast.LENGTH_SHORT).show();
                 /*Appointments app = appointmentsList.get(index);
                 Intent i = new Intent(binding.getRoot().getContext(), customer_worker_requests.class);
