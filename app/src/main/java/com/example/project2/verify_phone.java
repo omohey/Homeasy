@@ -73,7 +73,7 @@ public class verify_phone extends AppCompatActivity {
             int int_random = rand.nextInt(upperbound);
             codetosend = codetosend + Integer.toString(int_random);
         }
-        String Body = "Your authentication code is " + codetosend;
+        String Body = codetosend;
         smsMessage = new SMSMessage(Phone, Body, false);
 
 
