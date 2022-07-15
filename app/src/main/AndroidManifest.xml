@@ -20,6 +20,9 @@
             android:name=".worker_appointment_details2"
             android:exported="false" />
         <activity
+            android:name=".ReportPage"
+            android:exported="true" />
+        <activity
             android:name=".CustomerViewAppDetail"
             android:exported="false" />
         <activity

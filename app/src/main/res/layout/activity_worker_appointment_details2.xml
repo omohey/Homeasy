@@ -131,5 +131,17 @@
         app:layout_constraintStart_toEndOf="@+id/rate_rated"
         app:layout_constraintTop_toBottomOf="@+id/price_text" />
 
+    <Button
+        android:id="@+id/reportButtonWorker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="56dp"
+        android:text="Report"
+        app:layout_constraintEnd_toStartOf="@+id/ratebtn"
+        app:layout_constraintHorizontal_bias="0.977"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ratingBar" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

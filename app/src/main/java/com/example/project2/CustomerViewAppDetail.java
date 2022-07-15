@@ -3,6 +3,7 @@ package com.example.project2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +27,7 @@ public class CustomerViewAppDetail extends AppCompatActivity {
     Appointments CurrentAppointment;
     TextView WorkerName, Rating, JobType, Date, Description, Price, Rate_Rated;
     RatingBar ratingBar;
-    Button Ratebtn;
+    Button Ratebtn, reportButton;
 
     FirebaseDatabase firebaseDatabase;
 
@@ -53,7 +54,7 @@ public class CustomerViewAppDetail extends AppCompatActivity {
         Rate_Rated = (TextView) findViewById(R.id.rate_rated);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         Ratebtn = (Button) findViewById(R.id.ratebtn);
-
+        reportButton = (Button) findViewById(R.id.reportButton);
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         // below line is used to get reference for our database.
@@ -64,6 +65,16 @@ public class CustomerViewAppDetail extends AppCompatActivity {
 
         appoinmentref = databaseReference.child(values.apps_table).child(AppID);
 
+        reportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(CustomerViewAppDetail.this, ReportPage.class);
+                i.putExtra("appID", AppID);
+                i.putExtra("reportedID", CurrentAppointment.getWorkerID());
+                i.putExtra("reporterID", CurrentAppointment.getCustomerID());
+                startActivity(i);
+            }
+        });
         Ratebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

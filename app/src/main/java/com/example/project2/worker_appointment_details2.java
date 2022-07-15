@@ -3,6 +3,7 @@ package com.example.project2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.project2.databinding.ActivityWorkerAppointmentDetails2Binding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +27,7 @@ public class worker_appointment_details2 extends AppCompatActivity {
     Appointments CurrentAppointment;
     TextView CustomerName, Rating, Status, Date, Description, Price, Rate_Rated;
     RatingBar ratingBar;
-    Button Ratebtn;
+    Button Ratebtn, reportButton;
     String Req_Con;
     String WorkerID;
 
@@ -56,6 +58,7 @@ public class worker_appointment_details2 extends AppCompatActivity {
         Rate_Rated = (TextView) findViewById(R.id.rate_rated);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         Ratebtn = (Button) findViewById(R.id.ratebtn);
+        reportButton = (Button) findViewById(R.id.reportButtonWorker);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -67,6 +70,17 @@ public class worker_appointment_details2 extends AppCompatActivity {
 
         appoinmentref = databaseReference.child(values.apps_table).child(AppID);
 
+
+        reportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(worker_appointment_details2.this, ReportPage.class);
+                i.putExtra("appID", AppID);
+                i.putExtra("reportedID", CurrentAppointment.getCustomerID());
+                i.putExtra("reporterID", CurrentAppointment.getWorkerID());
+                startActivity(i);
+            }
+        });
 
         Ratebtn.setOnClickListener(new View.OnClickListener() {
             @Override
