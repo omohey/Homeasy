@@ -25,7 +25,7 @@ import java.util.List;
 public class worker_appointment_details2 extends AppCompatActivity {
     String AppID;
     Appointments CurrentAppointment;
-    TextView CustomerName, Rating, Status, Date, Description, Price, Rate_Rated;
+    TextView CustomerName, Rating, Status, Date, Description, Price, Rate_Rated, Phone;
     RatingBar ratingBar;
     Button Ratebtn, reportButton;
     String Req_Con;
@@ -58,6 +58,7 @@ public class worker_appointment_details2 extends AppCompatActivity {
         Rate_Rated = (TextView) findViewById(R.id.rate_rated);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         Ratebtn = (Button) findViewById(R.id.ratebtn);
+        Phone = (TextView) findViewById(R.id.phone_text);
         reportButton = (Button) findViewById(R.id.reportButtonWorker);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -211,7 +212,10 @@ public class worker_appointment_details2 extends AppCompatActivity {
                         CustomerName.setText("Name: "+ customer.getName());
                         Float rating = customer.getRating();
                         Rating.setText("Rating: " + rating.toString());
-
+                        if (Req_Con.equals("Req"))
+                            Phone.setText("Phone: *phone number will appear if appointment gets confirmed");
+                        else
+                            Phone.setText("Phone: " + customer.getPhone());
                     }
 
                     @Override

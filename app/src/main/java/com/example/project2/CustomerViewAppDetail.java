@@ -25,7 +25,7 @@ public class CustomerViewAppDetail extends AppCompatActivity {
 
     String AppID;
     Appointments CurrentAppointment;
-    TextView WorkerName, Rating, JobType, Date, Description, Price, Rate_Rated;
+    TextView WorkerName, Rating, JobType, Date, Description, Price, Rate_Rated, Phone;
     RatingBar ratingBar;
     Button Ratebtn, reportButton;
 
@@ -55,6 +55,7 @@ public class CustomerViewAppDetail extends AppCompatActivity {
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         Ratebtn = (Button) findViewById(R.id.ratebtn);
         reportButton = (Button) findViewById(R.id.reportButton);
+        Phone = (TextView) findViewById(R.id.phonetext);
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         // below line is used to get reference for our database.
@@ -182,7 +183,7 @@ public class CustomerViewAppDetail extends AppCompatActivity {
                         WorkerName.setText("Name: "+ worker.getName());
                         Float rating = worker.getRating();
                         Rating.setText("Rating: " + rating.toString());
-
+                        Phone.setText("Phone: " + worker.getPhone());
                     }
 
                     @Override
