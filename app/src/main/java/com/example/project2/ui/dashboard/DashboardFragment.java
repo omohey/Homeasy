@@ -152,6 +152,9 @@ public class DashboardFragment extends Fragment implements NavigationView.OnNavi
                     if (list1 == null)
                     {
                         list1 = new ArrayList<>();
+                        Toast.makeText(binding.getRoot().getContext(), "No pending appointments", Toast.LENGTH_SHORT).show();
+                        return;
+
                     }
                     else
                     {

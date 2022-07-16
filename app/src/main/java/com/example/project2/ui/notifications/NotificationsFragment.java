@@ -150,6 +150,8 @@ public class NotificationsFragment extends Fragment {
                     List<String> list1 = customer.getAppointments();
                     if (list1 == null)
                     {
+                        Toast.makeText(binding.getRoot().getContext(), "No appointments", Toast.LENGTH_SHORT).show();
+                        return;
 //                        list1 = new ArrayList<>();
                     }
                     else

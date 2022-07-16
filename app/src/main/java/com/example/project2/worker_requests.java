@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -107,6 +108,11 @@ public class worker_requests extends AppCompatActivity {
                 appointsearchref.orderByChild("jobType").equalTo(values.getjobstring(worker.getJobType())).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.getValue() == null)
+                        {
+                            Toast.makeText(worker_requests.this, "There are currently no requests available", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         for (DataSnapshot snapshot1 : snapshot.getChildren())
                         {
                             Appointments appointment = snapshot1.getValue(Appointments.class);

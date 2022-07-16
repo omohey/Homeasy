@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -98,6 +99,11 @@ public class worker_appointments extends AppCompatActivity {
                 acceptedappointmentsList = worker.getAppointments();
                 requestedappslist = worker.getAppointmentsrequested();
 
+                if (requestedappslist == null && acceptedappointmentsList == null)
+                {
+                    Toast.makeText(worker_appointments.this, "You have no appointments", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (requestedappslist == null)
                 {
 

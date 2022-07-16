@@ -23,21 +23,21 @@
             android:layout_width="138dp"
             android:layout_height="147dp"
             android:clickable="true"
-            android:src="@drawable/carpenter_icon" />
+            android:src="@drawable/carpenter_logo" />
 
         <ImageView
             android:id="@+id/electrician_image"
             android:layout_width="138dp"
             android:layout_height="147dp"
             android:clickable="true"
-            android:src="@drawable/electrician_logo" />
+            android:src="@drawable/electrician_logo2" />
 
         <ImageView
             android:id="@+id/plumber_image"
             android:layout_width="136dp"
             android:layout_height="147dp"
             android:clickable="true"
-            android:src="@drawable/plumber_logo" />
+            android:src="@drawable/plumber_logo2" />
 
     </TableRow>
 
@@ -54,21 +54,21 @@
             android:layout_width="139dp"
             android:layout_height="131dp"
             android:clickable="true"
-            android:src="@drawable/gardner_logo" />
+            android:src="@drawable/gardener_logo" />
 
         <ImageView
             android:id="@+id/nanny_image"
             android:layout_width="136dp"
             android:layout_height="131dp"
             android:clickable="true"
-            android:src="@drawable/nanny_logo" />
+            android:src="@drawable/nanny_logo2" />
 
         <ImageView
             android:id="@+id/housekeeping_image"
             android:layout_width="135dp"
             android:layout_height="131dp"
             android:clickable="true"
-            android:src="@drawable/housekeeping_icon" />
+            android:src="@drawable/housekeeping_logo" />
 
     </TableRow>
 
@@ -85,21 +85,21 @@
             android:layout_width="138dp"
             android:layout_height="121dp"
             android:clickable="true"
-            android:src="@drawable/cook_logo" />
+            android:src="@drawable/cook_logo2" />
 
         <ImageView
             android:id="@+id/painter_image"
             android:layout_width="138dp"
             android:layout_height="121dp"
             android:clickable="true"
-            android:src="@drawable/painter_logo" />
+            android:src="@drawable/painter_logo2" />
 
         <ImageView
             android:id="@+id/ac_image"
             android:layout_width="137dp"
             android:layout_height="121dp"
             android:clickable="true"
-            android:src="@drawable/ac_logo" />
+            android:src="@drawable/ac_repair_logo" />
     </TableRow>
 
     <ImageView
