@@ -42,7 +42,7 @@
             android:exported="false" />
         <activity
             android:name=".customer_main"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_customer_main" />
         <activity
             android:name=".workers_main"

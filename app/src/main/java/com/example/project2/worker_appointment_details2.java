@@ -71,10 +71,16 @@ public class worker_appointment_details2 extends AppCompatActivity {
 
         appoinmentref = databaseReference.child(values.apps_table).child(AppID);
 
+        if (Req_Con.equals("Req"))
+        {
+            reportButton.setVisibility(View.INVISIBLE);
+        }
+
 
         reportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent i = new Intent(worker_appointment_details2.this, ReportPage.class);
                 i.putExtra("appID", AppID);
                 i.putExtra("reportedID", CurrentAppointment.getCustomerID());
@@ -213,7 +219,7 @@ public class worker_appointment_details2 extends AppCompatActivity {
                         Float rating = customer.getRating();
                         Rating.setText("Rating: " + rating.toString());
                         if (Req_Con.equals("Req"))
-                            Phone.setText("Phone: *phone number will appear if appointment gets confirmed");
+                            Phone.setText("Phone: *currently unavailable");
                         else
                             Phone.setText("Phone: " + customer.getPhone());
                     }

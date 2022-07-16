@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.project2.MainActivity;
 import com.example.project2.R;
 import com.example.project2.customer_booking;
 import com.example.project2.customer_main;
@@ -98,6 +99,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
 
 
+        startActivity(i);
+    }
+    public void onclick2()
+    {
+        Intent i = new Intent(binding.getRoot().getContext(), MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
     }
 }

@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/logout"
+        tools:layout_editor_absoluteY="48dp">
 
         <ImageView
             android:id="@+id/carpenterimage"
@@ -72,6 +73,7 @@
     </TableRow>
 
     <TableRow
+        android:id="@+id/tableRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,5 +101,17 @@
             android:clickable="true"
             android:src="@drawable/ac_logo" />
     </TableRow>
+
+    <ImageView
+        android:id="@+id/logout"
+        android:layout_width="51dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="onclick2"
+        android:src="@drawable/logout"
+        app:layout_constraintBottom_toTopOf="@+id/tablerow1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

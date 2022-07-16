@@ -4,9 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/drawable/money_icon.xml" value="0.2465" />
-        <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_customer_booking.xml" value="0.264" />
-        <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_customer_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_customer_booking.xml" value="0.2" />
+        <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_customer_main.xml" value="0.176" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_customer_view_app_detail.xml" value="0.25" />
+        <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_customer_worker_requests.xml" value="0.10740740740740741" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_login_page.xml" value="0.264" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_register_page.xml" value="0.22826086956521738" />
@@ -14,7 +15,7 @@
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_worker_appointment_details2.xml" value="0.264" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/activity_workers_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
-        <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/fragment_notifications.xml" value="0.25" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/layout/oneitem.xml" value="0.2" />
         <entry key="..\:/Users/omar/AndroidStudioProjects/Project2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
