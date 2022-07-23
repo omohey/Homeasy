@@ -2,6 +2,7 @@ package com.example.project2.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,17 +25,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     String customerID;
 
+    View root;
+    customer_main activity;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         //HomeViewModel homeViewModel =
                 //new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        root = binding.getRoot();
 
-        customer_main activity = (customer_main) getActivity();
+        activity = (customer_main) getActivity();
         customerID = activity.getCustomerID();
 
+        int width = activity.getWidth();
+        width =width/3;
 
         ImageView imageView = (ImageView) root.findViewById(R.id.logout);
         imageView.setOnClickListener(this);
@@ -44,25 +49,58 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         ImageView Im = (ImageView) root.findViewById(R.id.carpenterimage);
         Im.setOnClickListener(this);
+        ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) Im.getLayoutParams();
+        params.width = width;
+        Im.setLayoutParams(params);
+
+//        Im.setMaxWidth(width);
+
         Im = (ImageView) root.findViewById(R.id.electrician_image);
         Im.setOnClickListener(this);
+        Im.setLayoutParams(params);
+//        Im.setMaxWidth(width);
+
         Im = (ImageView) root.findViewById(R.id.plumber_image);
         Im.setOnClickListener(this);
+        Im.setLayoutParams(params);
+//        Im.setMaxWidth(width);
+
         Im = (ImageView) root.findViewById(R.id.gardner_image);
         Im.setOnClickListener(this);
+        Im.setLayoutParams(params);
+//        Im.setMaxWidth(width);
+
         Im = (ImageView) root.findViewById(R.id.nanny_image);
         Im.setOnClickListener(this);
+        Im.setLayoutParams(params);
+//        Im.setMaxWidth(width);
+
         Im = (ImageView) root.findViewById(R.id.housekeeping_image);
         Im.setOnClickListener(this);
+        Im.setLayoutParams(params);
+//        Im.setMaxWidth(width);
+
         Im = (ImageView) root.findViewById(R.id.cook_image);
         Im.setOnClickListener(this);
+        Im.setLayoutParams(params);
+//        Im.setMaxWidth(width);
+
         Im = (ImageView) root.findViewById(R.id.painter_image);
         Im.setOnClickListener(this);
+        Im.setLayoutParams(params);
+//        Im.setMaxWidth(width);
+
         Im = (ImageView) root.findViewById(R.id.ac_image);
         Im.setOnClickListener(this);
+        Im.setLayoutParams(params);
+//        Im.setMaxWidth(width);
+
+
+
 
         return root;
     }
+
 
     @Override
     public void onDestroyView() {

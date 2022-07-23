@@ -32,13 +32,11 @@ tools:context=".MainActivity">
         android:id="@+id/usernameEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="32dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toEndOf="@+id/usernameTextView"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -61,19 +59,16 @@ tools:context=".MainActivity">
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.347"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/usernameEdit"
         app:layout_constraintTop_toBottomOf="@+id/usernameEdit" />
 
     <TextView
         android:id="@+id/donthaveacc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="20dp"
         android:clickable="true"
         android:text="Don't have an account? Click here to register."
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"

@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -184,12 +185,12 @@ public class customer_booking extends AppCompatActivity {
         };
 
         Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
+        Year = cal.get(Calendar.YEAR);
+        Month = cal.get(Calendar.MONTH);
+        Day = cal.get(Calendar.DAY_OF_MONTH);
         int style = AlertDialog.THEME_HOLO_LIGHT;
-
-        datePickerDialog = new DatePickerDialog(this, dateSetListener, year, month, day);
+        DateString = makeDateString(Day, Month, Year);
+        datePickerDialog = new DatePickerDialog(this, dateSetListener, Year, Month, Day);
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
 
     }

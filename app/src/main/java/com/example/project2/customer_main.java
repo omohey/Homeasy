@@ -2,6 +2,7 @@ package com.example.project2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -19,6 +20,11 @@ public class customer_main extends AppCompatActivity /*implements View.OnClickLi
 
     private ActivityCustomerMainBinding binding;
     public String CustomerID;
+    int width;
+
+    public int getWidth() {
+        return width;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,10 @@ public class customer_main extends AppCompatActivity /*implements View.OnClickLi
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             CustomerID = bundle.getString("ID"); }
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        width = displayMetrics.widthPixels;
 
         binding = ActivityCustomerMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -42,6 +52,8 @@ public class customer_main extends AppCompatActivity /*implements View.OnClickLi
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_customer_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+
 
         /*ImageView Im = (ImageView) findViewById(R.id.carpenterimage);
         Im.setOnClickListener(this);*/

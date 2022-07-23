@@ -2,6 +2,7 @@ package com.example.project2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,9 +34,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         setContentView(R.layout.activity_main);
 //        startActivity(new Intent(this,customer_main.class) );
-
         TextView tv = (TextView) findViewById(R.id.donthaveacc);
         tv.setOnClickListener(this);
         Button b = (Button) findViewById(R.id.submit);
